@@ -2,7 +2,5 @@
 
 interface Operations
 {
-    public function totalRowsCount() {}
-
-    public function showSingleProduct() {}
+    public function totalRowsCount();
 }
