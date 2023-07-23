@@ -2,12 +2,11 @@ $("document").ready(function () {
   $("#productType").change(function () {
     const selectedType = $(this).find(":selected").val();
     const typeId = $(this).find(":selected").attr("data-id");
-    // console.log([typeId, selectedType]);
-    showProductTypeInputs(selectedType, typeId);
+    showAdditionalProductInputs(selectedType, typeId);
   });
 });
 
-function showProductTypeInputs(type, id) {
+function showAdditionalProductInputs(type, id) {
   //   hide all form elements
   $(".product-type_inputs .form-group").addClass("d-none");
   // make sure that the initail input values are not disabled
@@ -27,6 +26,20 @@ function showProductTypeInputs(type, id) {
     // assign val to the product type id hidden input
     $("#typeId").val(id);
   }
+}
+
+function skuChecker(sku) {
+  $.ajax({
+    url: "requests/requests.php",
+    type: "GET",
+    data: `sku=${sku}&action=check`,
+    success: function (res) {
+      console.log(res);
+    },
+    error: function (err) {
+      console.error(err);
+    },
+  });
 }
 
 function addProduct() {
@@ -106,13 +119,19 @@ function addProduct() {
         required: "Please, submit required data",
       },
     },
+    onfocusout: function (el) {
+      //  check sku value in database
+      if (el.name == "sku" && el.value.trim()) {
+        skuChecker(el.value);
+      }
+    },
     submitHandler: function () {
       $.ajax({
         url: "requests/requests.php",
         type: "POST",
         dataType: "html",
         data: $("#product_form").serialize() + "&action=add",
-        sucess: function (res) {
+        success: function (res) {
           console.log(res);
         },
         error: function (err) {
@@ -123,4 +142,4 @@ function addProduct() {
   });
 }
 
-// addProduct();
+addProduct();

@@ -22,7 +22,7 @@
                     <h1 class="h2">Product Add</h1>
                 </div>
                 <div class="col-lg-3 col-md-6 col-6 offset-lg-1  text-end">
-                    <button type="submit" form="product_form" onclick="addProduct()" id="addProductBtn" class="btn btn-success me-2">Save</button>
+                    <button type="submit" form="product_form" id="addProductBtn" class="btn btn-success me-2">Save</button>
                     <a href="index.php" class="btn btn-secondary" id="cancel-btn">Cancel</a>
                 </div>
             </div>
