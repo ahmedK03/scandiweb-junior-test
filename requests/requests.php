@@ -28,5 +28,5 @@ if (isset($_POST['action'])) {
 
 if (isset($_GET['action']) && $_GET['action'] === 'check') {
     $sku = $products->sanitizeInputs($_GET['sku']);
-    echo "received sku";
+    $products->skuChecker($sku);
 }

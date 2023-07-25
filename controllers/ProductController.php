@@ -15,4 +15,15 @@ class ProductController extends Database
         Database::insertGeneralInfo($typeId, $name, $sku, $price);
         return true;
     }
+    /**
+     * check if sku exists in the database onfocusout js event
+     */
+    public function skuChecker($sku)
+    {
+        $searchResults = Database::search($sku);
+        if (count($searchResults) > 0) {
+            echo 'sku already exists';
+        }
+        return true;
+    }
 }

@@ -32,9 +32,11 @@ function skuChecker(sku) {
   $.ajax({
     url: "requests/requests.php",
     type: "GET",
+    dataType: "TEXT",
     data: `sku=${sku}&action=check`,
     success: function (res) {
       console.log(res);
+      $(".sku-error").html(res);
     },
     error: function (err) {
       console.error(err);

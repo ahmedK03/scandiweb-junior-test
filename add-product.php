@@ -34,6 +34,7 @@
                         <div class="form-group">
                             <label class="form-label fs-4" for="sku">SKU</label>
                             <input type="text" id="sku" name="sku" required class="form-control form-control-sm">
+                            <span class="sku-error text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label class="form-label fs-4" for="name">Name</label>
@@ -47,7 +48,7 @@
                             <label class="form-label fs-4" for="productType">Type Switcher</label>
                             <select class="form-select form-select-sm" name="type" id="productType" required aria-label="product type">
                                 <option disabled="" selected="">Open this select menu</option>
-                                <option value="dvd" data-id="1">DVD - disc</option>
+                                <option value="dvd" data-id="1">DVD</option>
                                 <option value="book" data-id="2">Book</option>
                                 <option value="furniture" data-id="3">Furniture</option>
                             </select>
