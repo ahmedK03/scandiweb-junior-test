@@ -30,36 +30,9 @@
             <section class="listing-products">
                 <div class="row justify-content-center">
                     <div class="col-11">
-                        <div id="all_products">
+                        <div id="all__products" class="d-none">
                             <div class="row">
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <article class="single-product d-flex flex-column justify-content-center align-items-center">
-                                        <div class="form-check align-self-start">
-                                            <input class="delete-checkbox form-check-input" type="checkbox" value="" id="mass-del">
-                                            <label class="form-check-label d-none" for="mass-del">
-                                                Default checkbox
-                                            </label>
-                                        </div>
-                                        <div class="sku">JVC200123</div>
-                                        <div class="product_name">Acme DISC</div>
-                                        <div class="product_price">1.00 $</div>
-                                        <div class="product_details"><b class="type">Size: </b>700 MB</div>
-                                    </article>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <article class="single-product d-flex flex-column justify-content-center align-items-center">
-                                        <div class="form-check align-self-start">
-                                            <input class="delete-checkbox form-check-input" type="checkbox" value="" id="mass-del">
-                                            <label class="form-check-label d-none" for="mass-del">
-                                                Default checkbox
-                                            </label>
-                                        </div>
-                                        <div class="sku">GGVP0007</div>
-                                        <div class="product_name">War and Peace</div>
-                                        <div class="product_price">20.00 $</div>
-                                        <div class="product_details"><b class="type">Weight: </b>2 Kg</div>
-                                    </article>
-                                </div>
+
                                 <div class="col-sm-6 col-md-4 col-lg-3">
                                     <article class="single-product d-flex flex-column justify-content-center align-items-center">
                                         <div class="form-check align-self-start">
@@ -76,6 +49,11 @@
                                 </div>
                             </div>
                         </div>
+                    <div id="all_products">
+                        <div class="row">
+                            <!-- list all products -->
+                        </div>
+                    </div>
                     </div>
                 </div>
             </section>

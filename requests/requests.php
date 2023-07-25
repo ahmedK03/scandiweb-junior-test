@@ -22,11 +22,16 @@ if (isset($_POST['action'])) {
 
     if ($_POST['action'] === 'add') {
         // add the product
-        $products->addProduct($id, $sku, $name, $price);
+        $products->addProduct($id, $name, $sku, $price);
     }
 }
 
-if (isset($_GET['action']) && $_GET['action'] === 'check') {
-    $sku = $products->sanitizeInputs($_GET['sku']);
-    $products->skuChecker($sku);
+if (isset($_GET['action'])) {
+    // list all products
+    $_GET['action'] == 'list' ? $products->showProducts() : null;
+    // sku checker
+    if ($_GET['action'] === 'check') {
+        $sku = $products->sanitizeInputs($_GET['sku']);
+        $products->skuChecker($sku);
+    }
 }

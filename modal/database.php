@@ -9,6 +9,14 @@ class Database extends Config implements Operations
     // functions are: read, app, mass delete
     // use interface for totalRowCount
 
+    public function read()
+    {
+        $query = "SELECT * FROM products";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
     public function insertGeneralInfo($typeId, $name, $sku, $price)
     {
         $query = "INSERT INTO products (product_type_id,product_name,sku,product_price) VALUES (:typeId, :name, :sku, :price)";
@@ -17,7 +25,14 @@ class Database extends Config implements Operations
         return true;
     }
 
-
+    public function search($sku)
+    {
+        $query = "SELECT sku FROM products WHERE sku LIKE :sku LIMIT 1";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute(['sku' => '%' . $sku . '%']);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 
     public function totalRowsCount()
     {
