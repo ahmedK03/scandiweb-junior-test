@@ -1,9 +1,14 @@
 $("document").ready(function () {
+  // control the type switch
   $("#productType").change(function () {
     const selectedType = $(this).find(":selected").val();
     const typeId = $(this).find(":selected").attr("data-id");
     showAdditionalProductInputs(selectedType, typeId);
   });
+  // init add products on loadup
+  addProduct();
+  // init getProducts func
+  getProducts();
 });
 
 function showAdditionalProductInputs(type, id) {
@@ -135,6 +140,16 @@ function addProduct() {
         data: $("#product_form").serialize() + "&action=add",
         success: function (res) {
           console.log(res);
+          // display msg
+          $(".loading").html(
+            `<div class="alert alert-success" role="alert">Product Added Successfully!</div>`
+          );
+          // clear the inputs
+          $("input").val("");
+          // redirect to the index page after 2.5 secs
+          setTimeout(function () {
+            window.location.href = "index.php";
+          }, 2500);
         },
         error: function (err) {
           console.error(err);
@@ -144,4 +159,17 @@ function addProduct() {
   });
 }
 
-addProduct();
+function getProducts() {
+  $.ajax({
+    url: "requests/requests.php",
+    type: "GET",
+    dataType: "html",
+    data: "action=list",
+    success: function (res) {
+      $("#all_products .row").append(res);
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
+}

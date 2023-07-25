@@ -29,7 +29,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-5 offset-lg-1">
-                    <div class="loading fs-5"></div>
+                    <div class="loading"></div>
                     <form action="" method="POST" id="product_form">
                         <div class="form-group">
                             <label class="form-label fs-4" for="sku">SKU</label>
