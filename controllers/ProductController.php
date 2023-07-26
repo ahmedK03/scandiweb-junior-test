@@ -19,13 +19,14 @@ class ProductController extends Database
                     '<div class="col-sm-6 col-md-4 col-lg-3">
                         <article class="single-product d-flex flex-column justify-content-center align-items-center">
                                 <div class="form-check align-self-start">
-                                    <input class="delete-checkbox form-check-input" type="checkbox"
-                                    value=' . $product['id'] . ' id="mass-del">
+                                    <input class="delete-checkbox form-check-input"
+                                    name="product_mass_delete[]" type="checkbox"
+                                    value="' . $product['id'] . '"/>
                                 </div>
                                 <div class="sku">' . $product['sku'] . '</div>
                                 <div class="product_name">' . $product['product_name'] . '</div>
                                 <div class="product_price">' .
-                                number_format($product['product_price'], 2, '.', '') . ' $</div>
+                    number_format($product['product_price'], 2, '.', '') . ' $</div>
                                 <div class="product_details"><b class="type">Dimensions: </b>24x45x15</div>
                         </article>
                     </div>';
@@ -49,6 +50,12 @@ class ProductController extends Database
         if (count($searchResults) > 0) {
             echo 'sku already exists';
         }
+        return true;
+    }
+
+    public function del($arr)
+    {
+        Database::massDelete($arr);
         return true;
     }
 }

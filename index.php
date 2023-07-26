@@ -15,45 +15,28 @@
 </head>
 
 <body>
-    <main class="mt-md-3 mt-lg-5">
+    <main class="mt-3 mt-lg-5">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-6 col-md-6 col-6">
                     <h1 class="h2">Prodcuts List</h1>
                 </div>
-                <div class="col-lg-4 col-md-6 offset-lg-1 text-end">
+                <div class="col-lg-4 col-md-6 offset-lg-1 col-6 text-end">
                     <a href="add-product.php" class="btn btn-info me-2">ADD</a>
-                    <button class="btn btn-danger" id="delete-product-btn">MASS DELETE</button>
+                    <button class="btn btn-danger" form="del_form" id="delete-product-btn">MASS DELETE</button>
                 </div>
             </div>
             <hr>
             <section class="listing-products">
                 <div class="row justify-content-center">
                     <div class="col-11">
-                        <div id="all__products" class="d-none">
-                            <div class="row">
-
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <article class="single-product d-flex flex-column justify-content-center align-items-center">
-                                        <div class="form-check align-self-start">
-                                            <input class="delete-checkbox form-check-input" type="checkbox" value="" id="mass-del">
-                                            <label class="form-check-label d-none" for="mass-del">
-                                                Default checkbox
-                                            </label>
-                                        </div>
-                                        <div class="sku">TR120555</div>
-                                        <div class="product_name">Chair</div>
-                                        <div class="product_price">40.00 $</div>
-                                        <div class="product_details"><b class="type">Dimensions: </b>24x45x15</div>
-                                    </article>
+                        <div id="all_products">
+                            <form action="" method="POST" id="del_form">
+                                <div class="row">
+                                    <!-- list all products -->
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    <div id="all_products">
-                        <div class="row">
-                            <!-- list all products -->
-                        </div>
-                    </div>
                     </div>
                 </div>
             </section>

@@ -173,3 +173,23 @@ function getProducts() {
     },
   });
 }
+
+// mass delete function
+
+$("#del_form").submit(function (e) {
+  e.preventDefault();
+  $.ajax({
+    url: "requests/requests.php",
+    type: "POST",
+    data: $("#del_form").serialize() + "&action=del",
+    success: function (res) {
+      // empty the html first
+      $("all_products .row").empty();
+      // show products after delete
+      // getProducts();
+    },
+    error: function (err) {
+      console.error(err);
+    },
+  });
+});

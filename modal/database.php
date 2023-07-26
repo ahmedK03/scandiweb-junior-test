@@ -34,6 +34,14 @@ class Database extends Config implements Operations
         return $result;
     }
 
+    public function massDelete($arr)
+    {
+        $query = "DELETE FROM products WHERE id IN($arr)";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return true;
+    }
+
     public function totalRowsCount()
     {
         $query = "SELECT * FROM products";
