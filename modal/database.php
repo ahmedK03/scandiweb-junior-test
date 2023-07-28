@@ -1,9 +1,8 @@
 <?php
 
 require_once('../config/config.php');
-require_once('../interfaces/operations.interface.php');
 
-class Database extends Config implements Operations
+class Database extends Config
 {
     // here goes the crud operations only
     // functions are: read, app, mass delete
@@ -40,14 +39,5 @@ class Database extends Config implements Operations
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         return true;
-    }
-
-    public function totalRowsCount()
-    {
-        $query = "SELECT * FROM products";
-        $stmt =  $this->connection->prepare($query);
-        $stmt->execute();
-        $rowsCount = $stmt->rowCount();
-        return $rowsCount;
     }
 }
