@@ -149,7 +149,7 @@ function addProduct() {
           // redirect to the index page after 2.5 secs
           setTimeout(function () {
             window.location.href = "index.php";
-          }, 2500);
+          }, 300);
         },
         error: function (err) {
           console.error(err);
@@ -184,9 +184,9 @@ $("#del_form").submit(function (e) {
     data: $("#del_form").serialize() + "&action=del",
     success: function (res) {
       // empty the html first
-      $("all_products .row").empty();
+      $("#all_products .row").empty();
       // show products after delete
-      // getProducts();
+      getProducts();
     },
     error: function (err) {
       console.error(err);
