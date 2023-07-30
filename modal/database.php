@@ -1,6 +1,6 @@
 <?php
 
-require_once('../config/config.php');
+require_once(__DIR__ . '/../config/config.php');
 
 class Database extends Config
 {
@@ -39,5 +39,14 @@ class Database extends Config
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         return true;
+    }
+
+    public function loadTypes()
+    {
+        $query = "SELECT * FROM product_category";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        $types = $stmt->fetchAll();
+        return $types;
     }
 }

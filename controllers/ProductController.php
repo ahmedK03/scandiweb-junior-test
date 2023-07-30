@@ -1,14 +1,21 @@
 <?php
-
-require_once('../modal/database.php');
-require_once('../traits/utils.trait.php');
-
-
+require_once(__DIR__ . '/../modal/database.php');
+require_once(__DIR__ . '/../traits/utils.trait.php');
 class ProductController extends Database
 {
-    // functions to add data to the db
     // import trait
     use Utils;
+    private $test = 'ansdlkhasd';
+    public function setTest($newTestVal)
+    {
+        $this->test = $newTestVal;
+    }
+    public function getTest()
+    {
+        return $this->test;
+    }
+
+
     public function showProducts()
     {
         $output = '';
@@ -34,7 +41,6 @@ class ProductController extends Database
             }
         }
         return true;
-        // number_format($product['product_price'], 2, '.', '')
     }
     public function addProduct($typeId, $name, $sku, $price)
     {
@@ -57,5 +63,14 @@ class ProductController extends Database
     {
         Database::massDelete($arr);
         return true;
+    }
+
+    public function loadProductTypes()
+    {
+        $catergories = Database::loadTypes();
+        foreach ($catergories as $catergory) {
+            echo '<option value="' . $catergory['category'] . '" data-id="' . $catergory['id'] . '">' . strtoupper($catergory['category']) . '</option>';
+        }
+        return null;
     }
 }
