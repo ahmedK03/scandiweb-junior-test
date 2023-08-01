@@ -1,26 +1,36 @@
 <?php
 
+/**
+ * Handling all the requests
+ */
+
 require_once('../controllers/ProductController.php');
 
 $products = new ProductController();
-// here goes all the requests, post and get
 
 if (isset($_POST['action'])) {
 
     if ($_POST['action'] === 'add') {
         // add the product
         // parse the fileds first
-        $size = $products->sanitizeInputs($_POST['size']);
-        $weight = $products->sanitizeInputs($_POST['weight']);
         $height = $products->sanitizeInputs($_POST['height']);
         $width = $products->sanitizeInputs($_POST['width']);
         $length = $products->sanitizeInputs($_POST['length']);
+        // sent to the controller
+        $dimensions = implode(',', [$height, $width, $length]);
+        $weight = $products->sanitizeInputs($_POST['weight']);
+        $size = $products->sanitizeInputs($_POST['size']);
         $id = $products->sanitizeInputs($_POST['typeId']);
         $name = $products->sanitizeInputs($_POST['name']);
         $sku = $products->sanitizeInputs($_POST['sku']);
         $price = $products->sanitizeInputs($_POST['price']);
 
-        $products->addProduct($id, $name, $sku, $price);
+        // $products->addProduct($id, $name, $sku, $price);
+        $products->setVarType($id);
+
+        $typeVal1 = $products->getVarType();
+
+        echo "{$typeVal1} is: " . ${$typeVal1};
     }
 
     if ($_POST['action'] === 'del') {
@@ -38,3 +48,6 @@ if (isset($_GET['action'])) {
         $products->skuChecker($sku);
     }
 }
+
+
+// $arr

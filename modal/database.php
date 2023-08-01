@@ -41,12 +41,20 @@ class Database extends Config
         return true;
     }
 
-    public function loadTypes()
+    public function loadCategories()
     {
         $query = "SELECT * FROM product_category";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         $types = $stmt->fetchAll();
         return $types;
+    }
+    public function selectVariantName($typeId)
+    {
+        $query = "SELECT name FROM variant_name WHERE product_category_id = :id LIMIT 1";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute(['id' => $typeId]);
+        $varaintType = $stmt->fetch();
+        return $varaintType;
     }
 }

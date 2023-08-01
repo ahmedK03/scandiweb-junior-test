@@ -5,17 +5,27 @@ class ProductController extends Database
 {
     // import trait
     use Utils;
-    private $test = 'ansdlkhasd';
-    public function setTest($newTestVal)
+    private $value = 'this is a test value';
+    public function setNewValue($newVal)
     {
-        $this->test = $newTestVal;
+        $this->value = $newVal;
     }
-    public function getTest()
+    public function getValue()
     {
-        return $this->test;
+        return $this->value;
+    }
+    private $varaint_type;
+    public function setVarType($id)
+    {
+        $newVarType = Database::selectVariantName($id);
+        $this->varaint_type = $newVarType['name'];
     }
 
-
+    public function getVarType()
+    {
+        // result = size or weight or dimensions
+        return $this->varaint_type;
+    }
     public function showProducts()
     {
         $output = '';
@@ -65,9 +75,9 @@ class ProductController extends Database
         return true;
     }
 
-    public function loadProductTypes()
+    public function loadProductCategories()
     {
-        $catergories = Database::loadTypes();
+        $catergories = Database::loadCategories();
         foreach ($catergories as $catergory) {
             echo '<option value="' . $catergory['category'] . '" data-id="' . $catergory['id'] . '">' . strtoupper($catergory['category']) . '</option>';
         }
