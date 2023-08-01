@@ -29,7 +29,8 @@ if (isset($_POST['action'])) {
         $products->setVarType($id);
 
         $typeVal1 = $products->getVarType();
-
+        //expected output: dimensions is: $height,$width,$length
+        // or $size or $weight
         echo "{$typeVal1} is: " . ${$typeVal1};
     }
 
