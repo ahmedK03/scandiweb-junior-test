@@ -25,11 +25,11 @@ class Database extends Config
     }
 
 
-    protected function insertSwitcherValues($id, $typeVal)
+    protected function insertSwitcherValues($typeVal)
     {
-        $query = "INSERT INTO type_variants (var_name_id, `values`) SELECT name.id, inval.val FROM variant_name AS name JOIN  (SELECT :typeVal as val) inval WHERE name.product_category_id = :id LIMIT 0,3";
+        $query = "INSERT INTO type_variants (product_id, `values`) SELECT prod.id, :typeVal  FROM products AS prod  WHERE prod.id = LAST_INSERT_ID() LIMIT 0,3";
         $stmt = $this->connection->prepare($query);
-        $stmt->execute(['typeVal' => $typeVal, 'id' => $id]);
+        $stmt->execute(['typeVal' => $typeVal]);
         return true;
     }
 
@@ -44,7 +44,8 @@ class Database extends Config
 
     protected function massDelete($arr)
     {
-        $query = "DELETE FROM products WHERE id IN($arr)";
+        $query = "DELETE FROM products WHERE id IN($arr);
+        DELETE FROM type_variants WHERE product_id IN($arr)";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         return true;

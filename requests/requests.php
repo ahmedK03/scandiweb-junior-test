@@ -25,13 +25,11 @@ if (isset($_POST['action'])) {
         $sku = $products->sanitizeInputs($_POST['sku']);
         $price = $products->sanitizeInputs($_POST['price']);
 
-        // $products->addProduct($id, $name, $sku, $price);
+        // setter func
         $products->setVarType($id);
-
-        $typeVal1 = $products->getVarType();
-        //expected output: dimensions is: $height,$width,$length
-        // or $size or $weight
-        echo "{$typeVal1} is: " . ${$typeVal1};
+        // getter
+        $typeVal = $products->getVarType();
+        $products->addProduct($id, $name, $sku, $price, ${$typeVal});
     }
 
     if ($_POST['action'] === 'del') {

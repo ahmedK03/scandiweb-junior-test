@@ -47,12 +47,12 @@ class ProductController extends Database
     }
     public function addProduct($typeId, $name, $sku, $price, $typeVal)
     {
-        print_r(['id' => $typeId, 'name' => $name, 'sku' => $sku, 'price' => $price, 'extra' => $typeVal]);
-        return true;
-        // add general info
+        // print_r(['id' => $typeId, 'name' => $name, 'sku' => $sku, 'price' => $price, 'details' => $typeVal]);
+        // add main product info
         Database::insertGeneralInfo($typeId, $name, $sku, $price);
-        // add extra info
-        Database::insertSwitcherValues($typeId, $typeVal);
+        // add product details
+        Database::insertSwitcherValues($typeVal);
+        return true;
     }
 
     /**

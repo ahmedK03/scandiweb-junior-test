@@ -56,7 +56,7 @@ $product = new ProductController();
                                 <option disabled="" selected="">Open this select menu</option>
                                 <?php
                                 // load all the categories
-                                print_r($product->loadProductTypes());
+                                print_r($product->loadProductCategories());
                                 ?>
                             </select>
                         </div>
