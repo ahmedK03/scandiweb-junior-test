@@ -18,6 +18,9 @@ class ProductController extends Database
         // result = size or weight or dimensions
         return $this->varaint_type;
     }
+    /**
+     * loading the data from DB, then displays it at the home page
+     */
     public function showProducts()
     {
         $output = '';
@@ -45,6 +48,9 @@ class ProductController extends Database
         }
         return true;
     }
+    /**
+     * adds products to db
+     */
     public function addProduct($typeId, $name, $sku, $price, $typeVal)
     {
         // print_r(['id' => $typeId, 'name' => $name, 'sku' => $sku, 'price' => $price, 'details' => $typeVal]);
@@ -66,13 +72,17 @@ class ProductController extends Database
         }
         return true;
     }
-
+    /**
+     * mass delete
+     */
     public function del($arr)
     {
         Database::massDelete($arr);
         return true;
     }
-
+    /**
+     * get the categories at the add-product page
+     */
     public function loadProductCategories()
     {
         $catergories = Database::loadCategories();
