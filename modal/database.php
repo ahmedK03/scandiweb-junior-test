@@ -10,7 +10,7 @@ class Database extends Config
 
     protected function read()
     {
-        $query = "SELECT product.`id`, product.`product_name`, product.`sku`, product.`product_price`, v_name.`name`, var.`values` FROM `products` AS product JOIN `product_category` AS cate ON product.product_category_id = cate.id JOIN `variant_name` AS v_name ON v_name.product_category_id = cate.id JOIN `type_variants` AS var ON product.id = var.product_id";
+        $query = "SELECT product.`id`, product.`product_name`, product.`sku`, product.`product_price`, v_name.`name`, var.`values`, prod_unit.`unit` FROM `products` AS product JOIN `product_category` AS cate ON product.product_category_id = cate.id JOIN `product_unit` AS `prod_unit` ON product.product_category_id = prod_unit.cate_id JOIN `variant_name` AS v_name ON v_name.product_category_id = cate.id JOIN `type_variants` AS var ON product.id = var.product_id";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll();
